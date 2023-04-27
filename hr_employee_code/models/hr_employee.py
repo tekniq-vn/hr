@@ -18,7 +18,7 @@ class HrEmployee(models.Model):
 
     _inherit = "hr.employee"
 
-    code = fields.Char(string="Code", copy=False)
+    code = fields.Char(string="Code", groups="hr.group_hr_user", tracking=True, copy=False)
 
     _sql_constraints = [
         (

@@ -8,9 +8,8 @@
         <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_user') ])]" />
         <field name="arch" type="xml">
             <xpath expr="//div[hasclass('oe_title')]" position="inside">
-                <label for="code" class="oe_edit_only" />
                 <h3>
-                    <field name="code" />
+                    <field name="code" placeholder="Code"/>
                 </h3>
             </xpath>
         </field>
