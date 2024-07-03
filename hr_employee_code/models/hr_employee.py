@@ -63,3 +63,18 @@ class HrEmployee(models.Model):
         if not vals.get("code"):
             vals["code"] = self._generate_code()
         return super(HrEmployee, self).create(vals)
+
+    def name_get(self):
+        res = super(HrEmployee, self).name_get()
+        if self.env.user.has_group('hr.group_hr_user'):
+            new_res = []
+            for emp, name_tuple in zip(self, res):
+                if emp.code:
+                    name_tuple = (emp.id, _("[%(code)s] %(name)s") % {
+                        'name': name_tuple[1],
+                        'code': emp.code,
+                    })
+                new_res.append(name_tuple)
+            return new_res
+        return res
+
