@@ -23,8 +23,8 @@ class HrEmployee(models.Model):
     _sql_constraints = [
         (
             "code_uniq",
-            "unique(code)",
-            "The Employee Number must be unique across the company(s).",
+            "unique(code, company_id)",
+            "The Employee Number must be unique in the company.",
         ),
     ]
 
